@@ -1,6 +1,7 @@
 import pytest
 
-from TestData.DataSetReader import DataSetReader
+from test_lib.DataAbstraction import ImageAnalysisData
+from test_lib.DataSetReader import DataSetReader
 from luminoth import Detector, read_image, vis_objects
 
 resources_folder = 'resources'
@@ -22,5 +23,5 @@ def test_data_read(data_provider, detector):
         image = read_image(test_image.image_path)
         print("Testing image: " + test_image.image_path)
         objects = detector.predict(image)
-        assert test_image.expected_data == objects
+        assert test_image.get_expected_data() == ImageAnalysisData(objects)
         print("passed")

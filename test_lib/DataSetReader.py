@@ -3,6 +3,8 @@ import os
 import yaml
 import json
 
+from test_lib.DataAbstraction import ImageAnalysisData
+
 
 class TestImage(object):
 
@@ -10,13 +12,16 @@ class TestImage(object):
         self.name = image_node['name']
         self.image_path = os.path.join(working_folder, image_node['image_path'])
         self._expected_file_path = os.path.join(working_folder, image_node['expected'])
-        self.expected_data = None
+        self._expected_data = None
 
         self._read_expected_data()
 
     def _read_expected_data(self):
         with open(self._expected_file_path) as f:
-            self.expected_data = json.load(f)
+            self._expected_data = json.load(f)
+
+    def get_expected_data(self):
+        return ImageAnalysisData(self._expected_data)
 
 
 class DataSetReader(object):
