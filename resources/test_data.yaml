@@ -1,5 +1,9 @@
 test_data:
 
   - name: bikes_1
-    image_path: bikes.jpg
+    image_path: bikes.jpeg
     expected: bikes.json
+
+  - name: pedistants
+    image_path: pedistants.jpg
+    expected:  people.json

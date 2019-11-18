@@ -36,7 +36,11 @@ class DataSetReader(object):
         return self._images
 
     def __getitem__(self, name):
-        images = self.get_images()
-        for i in images:
+        for i in self.get_images():
             if i.name == name:
                 return i
+        raise Exception("Image was not found: " + name)
+
+    def __iter__(self):
+        for i in self.get_images():
+            yield i
