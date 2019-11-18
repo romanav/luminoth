@@ -1,7 +1,7 @@
-
-
 test_data:
 
-  {
-      image_path: bikes.jpg
-  }
+
+  - image_path: bikes.jpg
+    expected: null
+  - image_path: people.jpg
+    expected: null
