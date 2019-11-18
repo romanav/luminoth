@@ -1,10 +1,3 @@
-To run this project I have utilized https://luminoth.ai/
-
-Installation packages are:
-tensorflow==1.15.0 (The latest package does not not work with luminoth)
-Dataset that was used :
-# utilizing  dataset: e1c2565b51e9 |   Faster R-CNN w/COCO | #
-
 
 This example written to show my codding abilities in python and does not represent all testing that should be done for specific component.
 Current solution based on testing dataset that framework user can extend.
@@ -32,3 +25,5 @@ Structure:
 
 # Important notes
 1) Some magic values should be extracted to the config files (didn't do it to make things simple)
+1) Installation packages are: tensorflow==1.15.0 (The latest package does not not work with luminoth)
+1) utilizing  dataset (checkpoint): e1c2565b51e9 |   Faster R-CNN w/COCO | 
