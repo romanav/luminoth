@@ -14,13 +14,21 @@ class DetectedObject(object):
 
     def __eq__(self, other):
         if not self.get_rectangle() == other.get_rectangle():
+            print("This rectangle was: " + str(self.get_rectangle()))
+            print("Other rectangle was: " + str(other.get_rectangle()))
             return False
 
         if not self.get_type() == other.get_type():
+            print("This type was: " + str(self.get_type()))
+            print("Other type was: " + str(other.get_type()))
             return False
 
         if not self.get_probability() == other.get_probability():
+            print("This probability was: " + str(self.get_probability()))
+            print("Other probability was: " + str(other.get_probability()))
             return False
+
+        print ("Objects are equal following coordinates: " + str(self.get_rectangle()))
         return True
 
 

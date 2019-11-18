@@ -18,10 +18,15 @@ def detector():
     return Detector()
 
 
-def test_data_read(data_provider, detector):
+def test_run_in_bulk_validations_from_file(data_provider, detector):
     for test_image in data_provider:
         image = read_image(test_image.image_path)
         print("Testing image: " + test_image.image_path)
         objects = detector.predict(image)
-        assert test_image.get_expected_data() == ImageAnalysisData(objects)
-        print("passed")
+
+        returned_data = ImageAnalysisData(objects)
+        for i in returned_data:
+            rect = i.get_rectangle()
+            expected = test_image.get_expected_data()[rect]
+            assert expected == i
+
