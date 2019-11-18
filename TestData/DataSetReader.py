@@ -7,6 +7,7 @@ import json
 class TestImage(object):
 
     def __init__(self, working_folder, image_node):
+        self.name = image_node['name']
         self.image_path = os.path.join(working_folder, image_node['image_path'])
         self._expected_file_path = os.path.join(working_folder, image_node['expected'])
         self.expected_data = None
@@ -23,9 +24,19 @@ class DataSetReader(object):
     def __init__(self, working_folder, data_file_name):
         self._data_file_name = data_file_name
         self._working_folder = working_folder
+        self._images = None
 
     def get_images(self):
-        with open(os.path.join(self._working_folder, self._data_file_name)) as data_file:
-            data = yaml.load(data_file)
+        if self._images is None:
+            with open(os.path.join(self._working_folder, self._data_file_name)) as data_file:
+                data = yaml.load(data_file)
 
-        return [TestImage(self._working_folder, i) for i in data['test_data']]
+            self._images = [TestImage(self._working_folder, i) for i in data['test_data']]
+
+        return self._images
+
+    def __getitem__(self, name):
+        images = self.get_images()
+        for i in images:
+            if i.name == name:
+                return i

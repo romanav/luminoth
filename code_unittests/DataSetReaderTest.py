@@ -19,3 +19,7 @@ def test_read_image_path(data_reader):
 def test_read_image_date(data_reader):
     images = data_reader.get_images()
     assert isinstance(images[0].expected_data, list)
+
+
+def test_get_by_name(data_reader):
+    assert data_reader.get_images()[0] == data_reader['bikes_1']

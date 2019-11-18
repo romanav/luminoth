@@ -3,7 +3,3 @@ test_data:
   - name: bikes_1
     image_path: bikes.jpg
     expected: bikes.json
-
-  - name: people_1
-    image_path: people.jpg
-    expected:  bikes.json

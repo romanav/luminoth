@@ -1,23 +1,18 @@
 import pytest
 import luminoth
 
+from TestData.DataSetReader import DataSetReader
 
-# utilizing  dataset: e1c2565b51e9 |   Faster R-CNN w/COCO |    accurate | remote | NOT_DOWNLOADED |
-
-
-
+resources_folder = 'resources'
+data_file = "test_data.yaml"
 
 
 @pytest.fixture
-def date_provider():
-    import smtplib
-
-    return smtplib.SMTP("smtp.gmail.com", 587, timeout=5)
+def data_provider():
+    return DataSetReader(resources_folder, data_file)
 
 
-def test_ehlo(smtp_connection):
+def test_data_read(data_provider):
+    images = data_provider.get_images()
 
 
-
-    response, msg = smtp_connection.ehlo()
-    assert response == 250
