@@ -2,6 +2,6 @@ test_data:
 
 
   - image_path: bikes.jpg
-    expected: null
+    expected: bikes.json
   - image_path: people.jpg
-    expected: null
+    expected:  bikes.json
